@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tab Navigation Example</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="tab">
+  <button class="tablinks" onclick="openPage(event, 'page1')">Ana sayfa</button>
+  <button class="tablinks" onclick="openPage(event, 'page2')">Kategoriler</button>
+  <button class="tablinks" onclick="openPage(event, 'page3')">Ayarlar</button>
+</div>
+
+
+
+
+
+
+<div id="page1" class="tabcontent">
+
+ <div id="container1">
+   <div id="ana1"></div>
+   <div id="ana2"></div>
+   <div id="ana3"></div>
+   <div id="ana4"></div>
+   <div id="ana5"></div>
+   <div id="ana6"></div>
+   <div id="ana7"></div>
+   <div id="ana8"></div>
+
+
+
+
+
+ </div>
+</div>
+
+ <div id="appbar"></div>
+ <h6>Oyl burç hesaplama</h6>
+  
+<div id="snackbar"></div>
+
+
+<div class="content"></div>
+
+<div class="content"></div>
+
+
+</body>
+<style>
+
+body {
+  background-color: black;
+}
+
+
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+h6 {
+top: 20px;
+left: 50%;
+width: 200;
+font-size: 20px;
+position: absolute;
+display: block;
+color: white;
+z-index: 9999;
+transform: translateX(-50%);
+margin: 0 auto;
+}
+
+  
+  #container1 {
+    width: 100%;
+    height: 650px;
+    background-image: linear-gradient(45deg, rgb(81,35,162),rgb(54,38,166));
+    position: fixed;
+    top: 60px;
+    left: 50%;
+    overflow-x: auto;
+    transform: translateX(-50%);
+    margin: 0 auto;
+  }
+  
+    #ana1 {
+    width: 330px;
+    height: 130px;
+    background-color: #28146E;
+    position: absolute;
+    top: 30px;
+    left: 50%;
+    border-radius: 10px;
+    transform: translateX(-50%);
+    margin: 0 auto;
+    box-shadow: 0px 4px 18px rgb(146 161 176 / 20%);
+  }
+  
+  
+
+  
+  
+   #ana2 {
+    width: 330px;
+    height: 200px;
+    background-color: #28146E;
+    position: absolute;
+    top: 210px;
+    left: 50%;
+    border-radius: 10px;
+    transform: translateX(-50%);
+    margin: 0 auto;
+    
+  }
+  
+   #ana3 {
+    width: 330px;
+    height: 200px;
+    background-color: #28146E;
+    position: absolute;
+    top: 440px;
+    left: 50%;
+    border-radius: 10px;
+    transform: translateX(-50%);
+    margin: 0 auto;
+    
+  }
+  
+  #ana4 {
+    width: 330px;
+    height: 200px;
+    background-color: #28146E;
+    position: absolute;
+    top: 670px;
+    left: 50%;
+    border-radius: 10px;
+    transform: translateX(-50%);
+    margin: 0 auto;
+    
+  }
+  
+
+  
+  
+
+
+  
+  
+  #appbar {
+  overflow: hidden;
+  border: none ;
+  background-color:  #28146E;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 60px;
+ z-index: 999;
+}
+
+
+  #snackbar {
+            visibility: hidden;
+            min-width: 250px;
+            text-align: center;
+            border-radius: 12px;
+            padding: 16px;
+            position: fixed;
+            z-index: 1;
+            left: 50%;
+            bottom: 30px;
+            font-size: 17px;
+            transform: translateX(-50%);
+        }
+
+        #snackbar.show {
+            visibility: visible;
+            animation: fadein 0.5s, fadeout 0.5s 2.5s;
+        }
+
+        #snackbar.error {
+            background-color: tomato;
+          color: white;
+        }
+
+        #snackbar.success {
+            background-color: limegreen;
+          color: white;
+        }
+
+        @keyframes fadein {
+            from {bottom: 0; opacity: 0;} 
+            to {bottom: 30px; opacity: 1;}
+        }
+
+        @keyframes fadeout {
+            from {bottom: 30px; opacity: 1;} 
+            to {bottom: 0; opacity: 0;}
+        }
+        
+        
+        
+</style>
+<script>
+ 
+  
+  function showSnackbar(message, type) {
+            const snackbar = document.getElementById('snackbar');
+            snackbar.textContent = message;
+            snackbar.className = `show ${type}`;
+            setTimeout(() => { snackbar.className = snackbar.className.replace(`show ${type}`, ""); }, 3000);
+        }
+
+        window.addEventListener('load', () => {
+            if (!navigator.onLine) {
+                showSnackbar("İnternet bağlantısı kesildi.", "error");
+            }
+        });
+
+        window.addEventListener('offline', () => {
+            showSnackbar("İnternet bağlantısı kesildi.", "error");
+        });
+
+        window.addEventListener('online', () => {
+            showSnackbar("Yeniden bağlandı.", "success");
+        });
+  
+  
+</script>
+</html>
